@@ -58,6 +58,12 @@ module.exports = {
     /** Generates thumbnail for the given url of public image*/
     thumbnail: (req, res) => {
 
+        var dir = './tmp';
+
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
+        }
+
         if (!req.body.url) {
             res.status(400).json({
                 'message': "url missing"

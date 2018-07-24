@@ -1,5 +1,5 @@
 {
-  "name": "sc_image_resize",
+  "name": "SC",
   "version": "1.0.0",
   "description": "Application to resize the image",
   "main": "server.js",
