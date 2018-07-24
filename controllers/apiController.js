@@ -43,6 +43,18 @@ module.exports = {
         return
     },
 
+    image: (req, res) => {
+        let file = path.join(__dirname, '../tmp/' + req.params.image);
+        if (!fs.existsSync(file)) {
+            res.json({
+                message: 'File not found',
+            });
+            return
+        }
+        res.download(file);
+        return
+    },
+
     /** Generates thumbnail for the given url of public image*/
     thumbnail: (req, res) => {
 
@@ -53,11 +65,31 @@ module.exports = {
             return
         }
         const url = req.body.url
-        let host = URL.parse(url).protocol.slice(0, -1)
+
+        //Regex for valid url
+        const urlRegex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/
+
+        if (!urlRegex.test(url)) {
+            res.json({
+                message: 'Invalid url',
+            });
+            return
+        }
+
+        let host = URL.parse(url)
+
+        if (host.protocol == null) {
+            res.json({
+                message: 'Invalid url',
+            });
+            return
+        }
+
+        protocol = host.protocol.slice(0, -1)
 
         var file = fs.createWriteStream('tmp/code.jpg');
 
-        (host == "https") ? client = https: client = http
+        (protocol == "https") ? client = https: client = http
 
         client.get(url, function (response) {
 
@@ -76,21 +108,24 @@ module.exports = {
             }).on('end', function () {
                 file.end();
                 sharp('tmp/code.jpg')
-                .resize(SIZE)
-                .toBuffer()
-                .then( data =>  {
-                    fs.createWriteStream('tmp/code.jpg').write(data);
-                    res.download(path.join(__dirname, '../tmp/code.jpg'));
-                    return
-                })
-                .catch( err => {
-                    res.json({
-                        message: 'Error in resizing',
-                        error: err
+                    .resize(SIZE, SIZE)
+                    .ignoreAspectRatio()
+                    .toBuffer()
+                    .then(data => {
+                        const fileName = Math.floor(Math.random() * 100000000) + 1;
+                        fs.createWriteStream(`tmp/${fileName}.jpg`).write(data);
+                        res.status(200).json({
+                            resizedImage: process.env.APP_URL + '/api/image/' + fileName + '.jpg'
+                        });
+                        return
+                    })
+                    .catch(err => {
+                        res.json({
+                            message: 'Error in resizing',
+                            error: err
+                        });
+                        return
                     });
-                    return
-                });
-
                 return
             });
         });

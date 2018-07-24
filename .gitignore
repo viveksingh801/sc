@@ -3,3 +3,4 @@ npm-debug.log
 .env
 access.log
 tmp/
+.DS_Store

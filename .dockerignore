@@ -2,3 +2,4 @@ node_modules
 npm-debug.log
 access.log
 tmp/
+.DS_Store

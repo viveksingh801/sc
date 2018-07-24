@@ -6,6 +6,7 @@ var jwt = require('jsonwebtoken');
 const apiController = require('../controllers/apiController')
 
 router.post('/login', apiController.login)
+router.get('/image/:image', apiController.image)
 
 /**
  * Middleware for validity of token

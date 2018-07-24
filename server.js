@@ -30,7 +30,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(bodyParser.json());
-
 app.use (function (error, req, res, next){
     if(error){
         res.status(400).send({'msg': "Invalid json"});
@@ -42,6 +41,7 @@ app.use('/api', apiRoutes);
 
 app.all('*', function (req, res) {
     res.status(400).send("Page not found");
+    return
 });
 
 
