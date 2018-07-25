@@ -12,7 +12,7 @@ Environment file - run this command - ```cp .env.example .env ```
 
 > If using docker run the following command in the root directory of the project
 * ```docker build -t sc:latest . ``` to build the docker container
-* ```docker run -d -p 9090:9090 vivek:t1```  to run container in detached mode.
+* ```docker run -d -p 9090:9090 sc:latest```  to run container in detached mode.
 * Now visit http://localhost:9000 
 
 
