@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretest": "eslint --ignore-path .gitignore ."
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
+    "eslint": "^5.2.0",
     "mocha": "^2.4.5"
   },
   "author": "Vivek Singh"
