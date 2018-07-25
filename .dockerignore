@@ -3,3 +3,5 @@ npm-debug.log
 access.log
 tmp/
 .DS_Store
+.nyc_output
+coverage/
