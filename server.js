@@ -40,7 +40,7 @@ app.use (function (error, req, res, next){
 app.use("/api", apiRoutes)
 
 app.all("*", function (req, res) {
-	res.status(400).send("Page not found")
+	res.status(404).send("Page not found")
 	return
 })
 
@@ -48,3 +48,6 @@ app.all("*", function (req, res) {
 app.listen(PORT, HOST, () => {
 	console.log(`Running on http://${HOST}:${PORT}`)
 })
+
+
+module.exports = app
