@@ -24,6 +24,8 @@ Run command ```npm install``` in the root directory of the project to execute th
 
 Run command ```npm test``` in the root directory of the project to test the code.
 
+It uses eslint and istanbul for code coverage report generation and that can be found in coverage folder.
+
 ## Documentation
 
-Please visit this link [Postman Documentation](https://) to get the api documentation.
+Please visit this link [Postman Documentation](https://documenter.getpostman.com/view/2494122/RWMJq6rQ) to get the api documentation.

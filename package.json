@@ -1,5 +1,5 @@
 {
-  "name": "SC",
+  "name": "sc",
   "version": "1.0.0",
   "description": "Test application for SC",
   "main": "server.js",
