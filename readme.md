@@ -29,3 +29,5 @@ It uses eslint and istanbul for code coverage report generation and that can be 
 ## Documentation
 
 Please visit this link [Postman Documentation](https://documenter.getpostman.com/view/2494122/RWMJq6rQ) to get the api documentation.
+
+> There is a log file access.log in the root directory of the project which contain the log in a specific format, of the request made to the application.
