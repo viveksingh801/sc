@@ -6,6 +6,7 @@ require("dotenv").config()
 const morgan = require("morgan")
 const bodyParser = require("body-parser")
 const apiRoutes = require("./routes/apiRoutes")
+const previewRoutes = require("./routes/previewRoutes")
 
 var fs = require("fs")
 var path = require("path")
@@ -38,6 +39,8 @@ app.use (function (error, req, res, next){
 })
 
 app.use("/api", apiRoutes)
+
+app.use("/preview", previewRoutes)
 
 app.all("*", function (req, res) {
 	res.status(404).send("Page not found")

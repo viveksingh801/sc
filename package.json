@@ -15,12 +15,16 @@
   "keywords": [],
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
     "dotenv": "^6.0.0",
     "express": "^4.16.1",
     "jsonpatch": "^3.0.1",
     "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.0",
-    "sharp": "^0.20.5"
+    "sharp": "^0.20.5",
+    "asyncawait": "^1.0.6",
+    "axios": "^0.16.2",
+    "request": "^2.87.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
